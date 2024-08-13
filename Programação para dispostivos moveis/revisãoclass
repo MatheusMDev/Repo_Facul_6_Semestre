@@ -1,0 +1,29 @@
+class Pessoa // usar o _ antes da pessoa fica privado
+{
+    String nome;
+    int idade;
+    //DateTime nasc;
+    late DateTime nasc; //date mostra que vai fazer depois que não vai ser obrigatorio
+
+    Pessoa(this.nome, this.idade, this.nasc); // obrigatorio usar a instanciação do objeto
+
+    Pessoa.semNasc(this.nome, this.idade)
+    {
+      this.nasc = DateTime(1995);
+    }
+
+
+
+    void Apresentar()
+    {
+      print("Nome: ${this.nome}, Idade: ${this.idade} Data de Nascimento: ${this.nasc}");
+    }
+}
+
+int main()
+{
+  Pessoa p = Pessoa("Rafa", 29, DateTime (1994)); // não precisa usar o new necessariamente
+  p.Apresentar();
+
+  return 0;
+}
