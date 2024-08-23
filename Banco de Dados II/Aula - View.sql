@@ -84,3 +84,13 @@ select * from Vendas_CCO.dbo.ped_total
 
 -----------------------------
 
+create function reajustar
+(
+	@valor decimal(10,2),
+	@taxa  decimal(10,2)
+)
+returns decimal(10,2)
+as
+begin
+
+end
