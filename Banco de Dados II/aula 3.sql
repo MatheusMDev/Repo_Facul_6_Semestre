@@ -81,3 +81,27 @@ create table mycopy(nome varchar(50), data datetime default getdate(), valor dec
 insert into mycopy select Produto, getdate(), valor from getItens(1)
 
 select * from mycopy
+
+------------------------------------------------
+declare @prod table (nome varchar(50), preco money)
+insert into @prod values ('lapizinho', 10)
+insert into @prod select prd_descricao, prd_valor from produtos
+select * from @prod
+go
+
+alter function buscarProd2 (@preco decimal(10,2)) 
+returns @prod table (nome varchar(50), qtd int, preco money)
+as
+begin
+	insert into @prod 
+		select prd_descricao, prd_qtd, prd_valor
+		from produtos
+		where prd_valor > @preco
+	--insert into @prod
+	--	select 'escrivaninha', 5, 150
+	--insert into @prod	
+	--	values ('lapis do morais',100, 2)
+	return
+end
+------------teste----------------
+select * from buscarProd2(2)
